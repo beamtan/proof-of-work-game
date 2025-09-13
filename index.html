@@ -1,0 +1,145 @@
+<!-- 
+  MARK: HTML
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BTC Miner: Learn Proof‑of‑Work</title>
+  <meta name="description"
+    content="A tiny static mini‑game that teaches Bitcoin proof‑of‑work by letting you mine a block in your browser. No libs, just HTML/CSS/JS." />
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <header>
+    <!-- <div class="logo">₿</div> -->
+    <img src="Resources/beamtan-cartoon-icon.png" alt="beamtan-blog icon" style="max-width: 65px; height: auto;" />
+    <div>
+      <h1 class="text-white">Bitcoin Miner Game — Learn Proof of Work</h1>
+      <p>Find a nonce so the block hash starts with N zeros. That <em>is</em> Bitcoin’s proof‑of‑work.</p>
+      <p>version 1.0</p>
+    </div>
+
+  </header>
+  <main>
+    <section class="grid">
+      <article class="card explainer">
+        <h2 class="text-white">How to play</h2>
+        <p>
+          เกมจำลองการขุดของ Bitcoin แบบง่ายๆ ให้เราเห็นภาพว่าบิทคอยถูกขุดมาได้ยังไง
+        </p>
+
+        <p>
+          ---
+        </p>
+
+        <p>1. เลือกความยากในการขุด <strong>Difficulty</strong> เพื่อตั้ง <strong>Target</strong></p>
+        <p>2. เลือกขุดครั้งเดียว <strong>(Try Mine 1)</strong> หรือ ขุดไปเรื่อยๆจนกว่าจะเจอ <strong>(Auto Mine)</strong>
+        </p>
+        <p>3. ถ้า Hash ของเราตรงกับ <strong>Target</strong> แปลว่าเราขุดสำเร็จ ✌️</p>
+
+      </article>
+
+      <article class="card block">
+        <h2 class="text-white">Block Builder</h2>
+        <div class="row">
+          <label>Prev Hash</label>
+          <input id="prevHash" type="text" class="mono"
+            value="0000000000000000000000000000000000000000000000000000000000000000" />
+        </div>
+        <div class="row">
+          <label>Data (Tx)</label>
+          <textarea id="data" class="mono"
+            placeholder="Alice→Bob 0.1 BTC; Bob→Carol 0.05 BTC">Alice→Bob 0.1 BTC; Bob→Carol 0.05 BTC</textarea>
+        </div>
+        <div class="row">
+          <label>Difficulty</label>
+          <input id="difficulty" type="number" min="1" max="6" value="2" />
+        </div>
+        <div class="row">
+          <label>Nonce</label>
+          <input id="nonce" type="number" min="0" value="0" />
+        </div>
+
+        <div class="btns">
+          <button id="tryBtn" class="primary">Try Mine 1</button>
+          <button id="autoBtn">Auto Mine ▶</button>
+          <button id="stopBtn" class="danger">Stop ⏹</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+
+        <p class="muted" style="margin-top:12px">
+          Header → <span class="mono">SHA‑256(SHA‑256(prevHash | data | nonce))</span>
+        </p>
+        <div id="headerPreview" class="hashbox mono"></div>
+
+        <p class="muted">Hash (double SHA‑256):</p>
+        <div id="hashOut" class="hashbox mono"></div>
+
+        <div class="progress" style="margin-top:10px">
+          <div id="progressBar" class="bar"></div>
+        </div>
+        <p id="status" class="muted">Ready.</p>
+      </article>
+
+      <aside class="card stats">
+        <h2>Stats</h2>
+        <div class="statgrid">
+          <div class="tile">
+            <div class="muted">Tries</div>
+            <div id="tries" class="big">0</div>
+          </div>
+          <div class="tile">
+            <div class="muted">Best Hash (min)</div>
+            <div id="bestHash" class="mono" style="font-size:12px; word-break: break-all;">—</div>
+          </div>
+          <div class="tile">
+            <div class="muted">Hashrate (est.)</div>
+            <div id="hps" class="big">0 H/s</div>
+          </div>
+          <div class="tile">
+            <div class="muted">Target</div>
+            <div id="target" class="mono">^0{2}.*</div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:8px">Tip: ทุกๆความยากที่เพิ่มขึ้น 1 ทำให้ต้องลองมากขึ้นประมาณ 16 เท่า.</p>
+        <button id="shareBtn" class="success" style="margin-top:8px">Share Your Block 📤</button>
+      </aside>
+
+      <article class="card tips explainer">
+        <h2 class="text-white">สาระน่ารู้</h2>
+        <ul>
+          <li><strong>การขุด (Mining)</strong> = คือการแข่งขันกันหาคำตอบของโจทย์คณิตศาสตร์
+            ใครเจอก่อนจะได้สิทธิ์สร้างบล็อกใหม่ ละได้รางวัลเป็น Bitcoin</li>
+          <li><strong>Nonce</strong> (Number used once) = คือเลขที่นักขุดเปลี่ยนไปเรื่อยๆ เพื่อหาผลลัพธ์ที่ถูกต้อง</li>
+          <li><strong>Hash</strong> = เปรียบเหมือนลายนิ้วมือของข้อมูล เปลี่ยนข้อมูลนิดเดียวผลลัพธ์ก็เปลี่ยนทันที</li>
+          <li><strong>เป้าหมาย (Target)</strong> = ในเกมนี้กติกาคือ Hash ต้องขึ้นต้นด้วยเลขศูนย์ตามจำนวนที่กำหนด
+            แต่ในระบบ
+            Bitcoin จริง ๆ จะใช้ “ค่าตัวเลขเป้าหมาย” ที่ซับซ้อนกว่านี้มาก</li>
+          <li><strong>ความยาก (Difficulty)</strong> = ยิ่งต้องการศูนย์นำหน้ามากขึ้น → ยิ่งหายากขึ้นแบบทวีคูณ เช่น จาก 2
+            ศูนย์ → 3 ศูนย์ ต้องลองมากขึ้นประมาณ 16 เท่า</li>
+        </ul>
+
+        <h2 class="text-white">Header คืออะไร?</h2>
+        <ul>
+          <li><strong>Block Header</strong> = ส่วนหัวของบล็อกที่เก็บข้อมูลสำคัญ</li>
+          <li>ในระบบ Bitcoin จริง ๆ จะมีหลายฟิลด์ เช่น เวอร์ชัน, เวลา, แฮชของบล็อกก่อนหน้า, Merkle root, ค่าเป้าหมาย
+            (nBits), และ Nonce</li>
+          <li>นักขุดจะเอา <strong>Header + Nonce</strong> ไปแฮชซ้ำๆ จนกว่าจะเจอ</li>
+          <li>ในเกมนี้ Header ถูกทำให้เรียบง่าย เหลือแค่ <code>PrevHash | Data | Nonce</code></li>
+        </ul>
+      </article>
+
+      <!-- <article class="card quiz keep-space" aria-hidden="true"></article> -->
+    </section>
+  </main>
+  <footer>
+    Built with ❤️ by <a href="https://beamtan.com">Beamtan.com</a>
+  </footer>
+
+  <script src="learn-mining.js"></script>
+</body>
+
+</html>
