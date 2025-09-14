@@ -141,6 +141,7 @@ main {
 
 input[type="text"],
 input[type="number"],
+input[type='range'],
 textarea {
     width: 100%;
     background: #0a1120;
