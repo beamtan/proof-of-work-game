@@ -37,7 +37,7 @@ const bestHashEl = $('bestHash');
 const hpsEl = $('hps');
 const status = $('status');
 const targetEl = $('target');
-const zerosLabel = $('zerosLabel');
+const difficultyLabel = $('difficultyLabel');
 const progressBar = $('progressBar');
 
 const tryBtn = $('tryBtn');
@@ -74,7 +74,7 @@ function updateTargetUI() {
     const d = Math.max(1, Math.min(6, Number(difficulty.value) || 1));
     difficulty.value = d;
     targetEl.textContent = `^0{${d}}.*`;
-    zerosLabel.textContent = String(d);
+    difficultyLabel.textContent = String(d);
 }
 
 function setStatus(msg) { status.textContent = msg; }

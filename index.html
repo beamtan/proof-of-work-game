@@ -3,12 +3,12 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bitcoin Miner Game - Learn Proof‑of‑Work</title>
-  <meta name="description"
-    content="เกมจำลองการขุดของ Bitcoin แบบง่ายๆ ให้เราเห็นภาพว่าบิทคอยถูกขุดมาได้ยังไง" />
+  <meta name="description" content="เกมจำลองการขุดของ Bitcoin แบบง่ายๆ ให้เราเห็นภาพว่าบิทคอยถูกขุดมาได้ยังไง" />
   <link rel="stylesheet" href="main.css" />
   <link rel="icon" type="image/x-icon" href="Resources/btc-mining-game-icon.png">
 </head>
@@ -53,10 +53,12 @@
           <textarea id="data" class="mono"
             placeholder="Alice→Bob 0.1 BTC; Bob→Carol 0.05 BTC">Alice→Bob 0.1 BTC; Bob→Carol 0.05 BTC</textarea>
         </div>
+
         <div class="row">
-          <label>Difficulty</label>
-          <input id="difficulty" type="number" min="1" max="6" value="2" />
+          <label for="difficulty">Difficulty: <span id="difficultyLabel">2</span></label>
+          <input id="difficulty" type="range" min="1" max="6" value="2" />
         </div>
+        
         <div class="row">
           <label>Nonce</label>
           <input id="nonce" type="number" min="0" value="0" />
@@ -91,7 +93,7 @@
             <div id="tries" class="big">0</div>
           </div>
           <div class="tile">
-            <div class="muted">Best Hash (min)</div>
+            <div class="muted">Minimum Hash Found (Best Hash)</div>
             <div id="bestHash" class="mono" style="font-size:12px; word-break: break-all;">—</div>
           </div>
           <div class="tile">
@@ -124,7 +126,8 @@
         <h2 class="text-white">Header คืออะไร?</h2>
         <ul>
           <li><strong>Block Header</strong> = ส่วนหัวของบล็อกที่เก็บข้อมูลสำคัญ</li>
-          <li>ในระบบ Bitcoin จริงๆจะเอามาจากข้อมูลหลายๆอย่าง เช่น เวอร์ชัน, เวลา, แฮชของบล็อกก่อนหน้า, Merkle root, ค่าเป้าหมาย
+          <li>ในระบบ Bitcoin จริงๆจะเอามาจากข้อมูลหลายๆอย่าง เช่น เวอร์ชัน, เวลา, แฮชของบล็อกก่อนหน้า, Merkle root,
+            ค่าเป้าหมาย
             (nBits), และ Nonce</li>
           <li>นักขุดจะเอา <strong>Header + Nonce</strong> ไปแฮชซ้ำๆ จนกว่าจะเจอ</li>
           <li>ในเกมนี้ Header ถูกทำให้ง่ายขึ้นเหลือแค่ <code>PrevHash | Data | Nonce</code></li>
