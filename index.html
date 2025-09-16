@@ -35,7 +35,7 @@
         </p>
 
         <p>1. เลือกความยากในการขุด <strong>Difficulty</strong> เพื่อตั้ง <strong>Target</strong></p>
-        <p>2. เลือกขุดครั้งเดียว <strong>(Try Mine 1)</strong> หรือ ขุดไปเรื่อยๆจนกว่าจะเจอ <strong>(Auto Mine)</strong>
+        <p>2. เลือกขุดครั้งเดียว หรือ ขุดไปเรื่อยๆจนกว่าจะเจอ <strong>(Auto Mine)</strong>
         </p>
         <p>3. ถ้า Hash ของเราตรงกับ <strong>Target</strong> แปลว่าเราขุดสำเร็จ ✌️</p>
 
@@ -65,7 +65,7 @@
         </div>
 
         <div class="btns">
-          <button id="tryBtn" class="primary">Try Mine 1</button>
+          <button id="tryBtn" class="primary">Single Mine</button>
           <button id="autoBtn">Auto Mine ▶</button>
           <button id="stopBtn" class="danger">Stop ⏹</button>
           <button id="resetBtn">Reset</button>
@@ -112,10 +112,9 @@
       <article class="card tips explainer">
         <h2 class="text-white">สาระน่ารู้</h2>
         <ul>
-          <li><strong>การขุด (Mining)</strong> = คือการแข่งขันกันหาคำตอบของโจทย์คณิตศาสตร์
-            ใครเจอก่อนจะได้สิทธิ์สร้างบล็อกใหม่ ละได้รางวัลเป็น Bitcoin</li>
+          <li><strong>การขุด (Mining)</strong> = คือการแข่งขันกัน Hash ใครเจอก่อนจะได้สิทธิ์สร้างบล็อกใหม่ ละได้รางวัลเป็น Bitcoin</li>
           <li><strong>Nonce</strong> (Number used once) = คือเลขที่นักขุดเปลี่ยนไปเรื่อยๆ เพื่อหาผลลัพธ์ที่ถูกต้อง</li>
-          <li><strong>Hash</strong> = เปรียบเหมือนลายนิ้วมือของข้อมูล เปลี่ยนข้อมูลนิดเดียวผลลัพธ์ก็เปลี่ยนทันที</li>
+          <li><strong>Hash</strong> = คือการเข้ารหัสเปรียบเหมือนลายนิ้วมือของข้อมูล เปลี่ยนข้อมูลนิดเดียวผลลัพธ์ก็เปลี่ยนทันที</li>
           <li><strong>เป้าหมาย (Target)</strong> = ในเกมนี้กติกาคือ Hash ต้องขึ้นต้นด้วยเลขศูนย์ตามจำนวนที่กำหนด
             แต่ในระบบ
             Bitcoin Network จริงๆ จะใช้ “ค่าตัวเลขเป้าหมาย” ที่ซับซ้อนกว่านี้มาก เรียกว่า nBits</li>
@@ -125,7 +124,7 @@
 
         <h2 class="text-white">Header คืออะไร?</h2>
         <ul>
-          <li><strong>Block Header</strong> = ส่วนหัวของบล็อกที่เก็บข้อมูลสำคัญ</li>
+          <li><strong>Block Header</strong> = ส่วนหัวของบล็อกที่เก็บข้อมูล Transaction การโอน</li>
           <li>ในระบบ Bitcoin จริงๆจะเอามาจากข้อมูลหลายๆอย่าง เช่น เวอร์ชัน, เวลา, แฮชของบล็อกก่อนหน้า, Merkle root,
             ค่าเป้าหมาย
             (nBits), และ Nonce</li>
